@@ -12,8 +12,7 @@ import {
   updateCategory,
 } from "../store/actions/categoryActions";
 import { Category, CategoryForm } from "../types/category";
-
-type Mode = "new" | "edit" | "delete";
+import { Mode } from "../types/app";
 
 const emptyForm: CategoryForm = {
   name: "",
@@ -41,7 +40,6 @@ const Categories = () => {
     if (mode === "new") dispatch(addCategory(form));
     else if (mode === "edit") dispatch(updateCategory(form, id as number));
     else if (mode === "delete") dispatch(deleteCategory(id as number));
-
     setIsModalVisible(false);
     setMode("new");
     setForm(emptyForm);

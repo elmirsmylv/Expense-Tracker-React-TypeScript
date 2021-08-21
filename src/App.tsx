@@ -12,6 +12,7 @@ import { Route } from "react-router";
 import Login from "./components/Login";
 import PrivateRoute from "./components/PrivateRoute";
 import Categories from "./components/Categories";
+import Records from "./components/Records";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -67,6 +68,7 @@ const App = () => {
                 <Login />
               </Route>
               <PrivateRoute path="/categories" component={Categories} />
+              <PrivateRoute path="/records" component={Records} />
             </div>
           </Content>
           <Footer style={{ textAlign: "center" }}>
@@ -79,70 +81,3 @@ const App = () => {
 };
 
 export default App;
-
-// import React, { useState } from "react";
-// import "./App.css";
-// import { Layout, Menu } from "antd";
-// import {
-//   MenuUnfoldOutlined,
-//   MenuFoldOutlined,
-//   UserOutlined,
-//   VideoCameraOutlined,
-//   UploadOutlined,
-// } from "@ant-design/icons";
-// import { Route } from "react-router";
-// import SignUp from "./components/SignUp";
-
-// const { Header, Sider, Content } = Layout;
-
-// function App() {
-//   const [collapsed, setCollapsed] = useState(false);
-
-//   const toggle = () => {
-//     setCollapsed(!collapsed);
-//   };
-
-//   return (
-//     <Layout>
-//       <Sider trigger={null} collapsible collapsed={collapsed}>
-//         <div className="logo" />
-//         <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-//           <Menu.Item key="1" icon={<UserOutlined />}>
-//             nav 1
-//           </Menu.Item>
-//           <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-//             nav 2
-//           </Menu.Item>
-//           <Menu.Item key="3" icon={<UploadOutlined />}>
-//             nav 3
-//           </Menu.Item>
-//         </Menu>
-//       </Sider>
-//       <Layout className="site-layout">
-//         <Header className="site-layout-background" style={{ padding: 0 }}>
-//           {React.createElement(
-//             collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-//             {
-//               className: "trigger",
-//               onClick: toggle,
-//             }
-//           )}
-//         </Header>
-//         <Content
-//           className="site-layout-background"
-//           style={{
-//             margin: "24px 16px",
-//             padding: 24,
-//             minHeight: 280,
-//           }}
-//         >
-//           <Route path="/register">
-//             <SignUp />
-//           </Route>
-//         </Content>
-//       </Layout>
-//     </Layout>
-//   );
-// }
-
-// export default App;
