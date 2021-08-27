@@ -4,6 +4,7 @@ import { Route, Redirect } from "react-router-dom";
 interface PrivateRouteProps {
   component: React.FC<any>;
   path: string;
+  exact: boolean;
 }
 
 function PrivateRoute({ component: Component, ...rest }: PrivateRouteProps) {

@@ -30,7 +30,7 @@ export default function SignUp() {
 
   const onFinish = (values: any) => {
     setLoading(true);
-    api
+    api()
       .post("/users/register", values)
       .then((res) => {
         console.log(res.data);

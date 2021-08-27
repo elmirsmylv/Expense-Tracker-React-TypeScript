@@ -4,7 +4,12 @@ import Modal from "antd/lib/modal/Modal";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../store";
-import { addRecord, getRecords } from "../store/actions/recordActions";
+import {
+  addRecord,
+  deleteRecord,
+  getRecords,
+  updateRecord,
+} from "../store/actions/recordActions";
 import { Category } from "../types/category";
 import { Record, RecordForm } from "../types/record";
 import { Mode } from "../types/app";
@@ -29,7 +34,7 @@ const Records = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [mode, setMode] = useState<Mode>("new");
   const [form, setForm] = useState<RecordForm>(emptyForm);
-  const [id, setId] = useState(null);
+  const [id, setId] = useState<number | null>(null);
 
   const showModal = (mode: Mode) => {
     setIsModalVisible(true);
@@ -37,8 +42,9 @@ const Records = () => {
   };
 
   const handleOk = () => {
-    console.log(form);
-    dispatch(addRecord(form));
+    if (mode === "new") dispatch(addRecord(form));
+    if (mode === "edit") dispatch(updateRecord(id, form));
+    if (mode === "delete") dispatch(deleteRecord(id));
     setIsModalVisible(false);
     setForm(emptyForm);
   };
@@ -46,6 +52,7 @@ const Records = () => {
   const handleCancel = () => {
     setIsModalVisible(false);
     setForm(emptyForm);
+    setId(null);
   };
 
   const columns = [
@@ -96,12 +103,29 @@ const Records = () => {
     {
       title: "Action",
       key: "action",
-      render: (text: string, record: Record) => (
-        <Space size="middle">
-          <EditOutlined style={{ color: "#00c7b0" }} onClick={() => {}} />
-          <DeleteOutlined style={{ color: "#c70d00" }} onClick={() => {}} />
-        </Space>
-      ),
+      render: (text: string, record: Record) => {
+        const { title, amount } = record;
+        const category_id = record.category.id;
+        return (
+          <Space size="middle">
+            <EditOutlined
+              style={{ color: "#00c7b0" }}
+              onClick={() => {
+                setForm({ title, amount, category_id });
+                showModal("edit");
+                setId(record.id);
+              }}
+            />
+            <DeleteOutlined
+              style={{ color: "#c70d00" }}
+              onClick={() => {
+                setId(record.id);
+                showModal("delete");
+              }}
+            />
+          </Space>
+        );
+      },
     },
   ];
 
@@ -183,7 +207,14 @@ const Records = () => {
           ) : null}
         </Modal>
       </div>
-      <Table loading={loading} columns={columns} dataSource={data} />;
+      <Table
+        loading={loading}
+        columns={columns}
+        dataSource={data}
+        rowKey="id"
+        style={{ width: "1650px" }}
+      />
+      ;
     </>
   );
 };

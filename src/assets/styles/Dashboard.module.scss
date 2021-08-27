@@ -1,0 +1,42 @@
+.small_card_section {
+  .small_card {
+    border-radius: 10px;
+    .small_card_div {
+      width: 250px;
+      padding-left: 0.5rem;
+      display: flex;
+
+      .red_circle {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background-color: rgb(255, 109, 109);
+      }
+
+      .small_card_content {
+        margin-top: -10px;
+        margin-left: 10px;
+        p {
+          font-size: 1rem;
+          font-weight: 400;
+          color: rgb(172, 172, 172);
+        }
+
+        span {
+          font-size: 1.3rem;
+        }
+      }
+      .svg {
+        margin-left: 3rem;
+        img {
+          width: 60px;
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+  .small_card:nth-child(2),
+  .small_card:nth-child(3) {
+    margin-left: 1.5rem;
+  }
+}
