@@ -161,7 +161,6 @@ const Categories = () => {
         columns={columns}
         dataSource={data}
         rowKey="id"
-        style={{ width: "1650px" }}
       />
     </>
   );

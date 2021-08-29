@@ -183,7 +183,10 @@ const Records = () => {
                 />
               </Form.Item>
 
-              <Form.Item label="Category">
+              <Form.Item
+                label="Category"
+                tooltip="You have to create new catogory if your category is not there."
+              >
                 <Select
                   defaultValue={form.category_id}
                   value={form.category_id}
@@ -212,7 +215,6 @@ const Records = () => {
         columns={columns}
         dataSource={data}
         rowKey="id"
-        style={{ width: "1650px" }}
       />
       ;
     </>

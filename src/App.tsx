@@ -58,7 +58,7 @@ const App = () => {
           <Sider collapsed={collapsed} onCollapse={onCollapse}>
             <div className="logo">
               <h2 style={{ color: "#fff", margin: "1rem 0 2rem 1.5rem" }}>
-                {collapsed ? " " : "Expense Tracker"}
+                {collapsed ? " " : "Expense.io"}
               </h2>
             </div>
             <Menu theme="dark" selectedKeys={[pathname]} mode="inline">
@@ -90,7 +90,7 @@ const App = () => {
                 />
               )}
             </Header>
-            <Content style={{ margin: "0 16px", marginInline: "auto" }}>
+            <Content style={{ margin: "0 16px" }}>
               <div
                 className="site-layout-background"
                 style={{ padding: 24, minHeight: 360 }}

@@ -1,5 +1,6 @@
 import { Record, RecordDispatch, RecordForm } from "../../types/record";
 import api from "../../utils/api";
+import { showSuccess } from "../../utils/messages";
 
 export const getRecords = () => async (dispatch: RecordDispatch) => {
   dispatch({ type: "GET_RECORDS_START" });
@@ -18,6 +19,7 @@ export const addRecord =
     try {
       const { data } = await api().post<Record>("/records", record);
       dispatch({ type: "ADD_RECORD_SUCCESS", payload: data });
+      showSuccess("Record added!");
     } catch {
       dispatch({ type: "ADD_RECORD_ERROR" });
     }
