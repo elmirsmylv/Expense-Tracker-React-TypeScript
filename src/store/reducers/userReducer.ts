@@ -18,6 +18,8 @@ const userReducer = (state: UserState = initialState, action: UserAction) => {
       return { ...state, loading: false, error: "Login failed" };
     case "IS_LOGGED_IN_ERROR":
       return { ...state, loading: false, error: "Token mising or invalid" };
+    case "LOGOUT":
+      return { ...state, data: {} as User };
     default:
       return state;
   }

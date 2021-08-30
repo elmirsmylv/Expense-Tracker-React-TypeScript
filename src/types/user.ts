@@ -45,11 +45,16 @@ interface IS_LOGGED_IN_ERROR {
   type: "IS_LOGGED_IN_ERROR";
 }
 
+interface LOGOUT {
+  type: "LOGOUT";
+}
+
 export type UserAction =
   | LOGIN_START
   | LOGIN_SUCCESS
   | LOGIN_ERROR
   | IS_LOGGED_IN_START
   | IS_LOGGED_IN_SUCCESS
-  | IS_LOGGED_IN_ERROR;
+  | IS_LOGGED_IN_ERROR
+  | LOGOUT;
 export type UserDispatch = ThunkDispatch<UserState, void, UserAction>;

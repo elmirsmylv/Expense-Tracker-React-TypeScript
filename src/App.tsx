@@ -11,6 +11,7 @@ import {
   MenuFoldOutlined,
   BarChartOutlined,
 } from "@ant-design/icons";
+import { BiLogOut } from "react-icons/bi";
 import { Route, Switch } from "react-router";
 import Login from "./components/Login";
 import PrivateRoute from "./components/PrivateRoute";
@@ -22,6 +23,8 @@ import { isLoggedIn } from "./store/actions/userActions";
 import { AppState } from "./store";
 import { Link, Redirect, useLocation } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
+import Logout from "./components/Logout";
+import Homepage from "./components/Homepage";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -54,6 +57,12 @@ const App = () => {
         <Route exact path="/register">
           <SignUp />
         </Route>
+        <Route exact path="/logout">
+          <Logout />
+        </Route>
+        <Route exact path="/home">
+          <Homepage />
+        </Route>
         <Layout style={{ minHeight: "100vh" }}>
           <Sider collapsed={collapsed} onCollapse={onCollapse}>
             <div className="logo">
@@ -71,12 +80,21 @@ const App = () => {
               <Menu.Item key="/categories" icon={<DesktopOutlined />}>
                 <Link to="/categories">Categories</Link>
               </Menu.Item>
+              <Menu.Item key="/logout" icon={<BiLogOut />}>
+                <Link to="/logout">Logout</Link>
+              </Menu.Item>
             </Menu>
           </Sider>
           <Layout className="site-layout">
             <Header
               className="site-layout-background"
-              style={{ padding: 0, backgroundColor: "#fff" }}
+              style={{
+                padding: 0,
+                backgroundColor: "#fff",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
             >
               {collapsed ? (
                 <MenuUnfoldOutlined
@@ -89,6 +107,14 @@ const App = () => {
                   onClick={() => toggle()}
                 />
               )}
+              <div
+                className="user"
+                style={{ marginTop: "1rem", marginRight: "2rem" }}
+              >
+                <p style={{ fontWeight: 500, opacity: "0.7" }}>
+                  {data.username && `Hi, ${data.full_name}`}
+                </p>
+              </div>
             </Header>
             <Content style={{ margin: "0 16px" }}>
               <div

@@ -7,6 +7,9 @@ import { showError, showSuccess } from "../utils/messages";
 import { AppState } from "../store";
 import { LoginForm } from "../types/user";
 import { login } from "../store/actions/userActions";
+import styles from "../assets/styles/LoginAndRegister.module.scss";
+import Homepage from "./Homepage";
+import loginSvg from "../assets/images/login_svg.svg";
 
 const Login = () => {
   const history = useHistory();
@@ -20,14 +23,6 @@ const Login = () => {
   };
 
   useEffect(() => {
-    error && showError(error);
-  }, [error]);
-
-  useEffect(() => {
-    data.username && showSuccess("You have successfully logged in!");
-  }, [data.username]);
-
-  useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       history.push("/");
@@ -35,44 +30,63 @@ const Login = () => {
   }, [data]);
 
   return (
-    <Form
-      form={form}
-      name="basic"
-      labelCol={{ span: 7 }}
-      wrapperCol={{ span: 11 }}
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
-    >
-      <h2 style={{ textAlign: "center", marginBottom: "2rem" }}>Login</h2>
-      {location.state?.newSignUp && (
-        <Result
-          status="success"
-          title="You successfully registered."
-          subTitle="Please login with your account."
-        />
-      )}
-      <Form.Item
-        label="Username"
-        name="username"
-        rules={[{ required: true, message: "Please input your username!" }]}
-      >
-        <Input />
-      </Form.Item>
+    <>
+      <Homepage>
+        <img src={loginSvg} alt="" width="600" />
+        <div className={styles.form}>
+          <Form
+            form={form}
+            name="basic"
+            layout="vertical"
+            style={{ width: "250px" }}
+            initialValues={{ remember: true }}
+            onFinish={onFinish}
+          >
+            {location.state?.newSignUp && (
+              <Result
+                status="success"
+                title="You successfully registered."
+                subTitle="Please login with your account."
+              />
+            )}
+            <Form.Item
+              name="username"
+              rules={[
+                { required: true, message: "Please input your username!" },
+              ]}
+            >
+              <Input placeholder="Email" style={{ borderRadius: "7px" }} />
+            </Form.Item>
 
-      <Form.Item
-        label="Password"
-        name="password"
-        rules={[{ required: true, message: "Please input your password!" }]}
-      >
-        <Input.Password />
-      </Form.Item>
+            <Form.Item
+              name="password"
+              rules={[
+                { required: true, message: "Please input your password!" },
+              ]}
+            >
+              <Input.Password
+                placeholder="Password"
+                style={{ borderRadius: "7px" }}
+              />
+            </Form.Item>
 
-      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button loading={loading} type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
-    </Form>
+            <Form.Item>
+              <Button
+                loading={loading}
+                type="primary"
+                htmlType="submit"
+                style={{
+                  borderRadius: "10px",
+                  width: "100%",
+                }}
+              >
+                Submit
+              </Button>
+            </Form.Item>
+          </Form>
+        </div>
+      </Homepage>
+    </>
   );
 };
 
