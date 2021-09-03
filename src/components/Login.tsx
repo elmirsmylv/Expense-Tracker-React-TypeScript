@@ -50,7 +50,7 @@ const Login = () => {
                   { required: true, message: "Please input your username!" },
                 ]}
               >
-                <Input placeholder="Email" className={styles.input} />
+                <Input placeholder="Username" className={styles.input} />
               </Form.Item>
 
               <Form.Item

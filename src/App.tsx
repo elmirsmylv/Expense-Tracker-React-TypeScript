@@ -21,7 +21,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { isLoggedIn } from "./store/actions/userActions";
 import { AppState } from "./store";
-import { Link, Redirect, useLocation } from "react-router-dom";
+import { Link, Redirect, useHistory, useLocation } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import Logout from "./components/Logout";
 import Homepage from "./components/Homepage";
@@ -35,6 +35,7 @@ const App = () => {
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state: AppState) => state.user);
   const { pathname } = useLocation();
+  const history = useHistory();
 
   const onCollapse = (collapsed: boolean) => {
     setCollapsed(collapsed);
@@ -46,6 +47,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(isLoggedIn());
+    history.push("/home");
   }, []);
 
   return (
