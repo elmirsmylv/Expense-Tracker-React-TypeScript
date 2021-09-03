@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Form, Input, Button, Result } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation, Link } from "react-router-dom";
 
 import { showError, showSuccess } from "../utils/messages";
 import { AppState } from "../store";
@@ -9,7 +9,7 @@ import { LoginForm } from "../types/user";
 import { login } from "../store/actions/userActions";
 import styles from "../assets/styles/LoginAndRegister.module.scss";
 import Homepage from "./Homepage";
-import loginSvg from "../assets/images/login_svg.svg";
+import loginSvg from "../assets/images/login_svg2.svg";
 
 const Login = () => {
   const history = useHistory();
@@ -32,58 +32,55 @@ const Login = () => {
   return (
     <>
       <Homepage>
-        <img src={loginSvg} alt="" width="600" />
-        <div className={styles.form}>
-          <Form
-            form={form}
-            name="basic"
-            layout="vertical"
-            style={{ width: "250px" }}
-            initialValues={{ remember: true }}
-            onFinish={onFinish}
-          >
-            {location.state?.newSignUp && (
-              <Result
-                status="success"
-                title="You successfully registered."
-                subTitle="Please login with your account."
-              />
-            )}
-            <Form.Item
-              name="username"
-              rules={[
-                { required: true, message: "Please input your username!" },
-              ]}
+        <div className={styles.content}>
+          <img src={loginSvg} alt="" width="600" className={styles.image} />
+          <div className={styles.form}>
+            <h2>Welcome Back To Expense.io</h2>
+            <Form
+              form={form}
+              name="basic"
+              layout="vertical"
+              style={{ width: "250px" }}
+              initialValues={{ remember: true }}
+              onFinish={onFinish}
             >
-              <Input placeholder="Email" style={{ borderRadius: "7px" }} />
-            </Form.Item>
-
-            <Form.Item
-              name="password"
-              rules={[
-                { required: true, message: "Please input your password!" },
-              ]}
-            >
-              <Input.Password
-                placeholder="Password"
-                style={{ borderRadius: "7px" }}
-              />
-            </Form.Item>
-
-            <Form.Item>
-              <Button
-                loading={loading}
-                type="primary"
-                htmlType="submit"
-                style={{
-                  borderRadius: "10px",
-                  width: "100%",
-                }}
+              <Form.Item
+                name="username"
+                rules={[
+                  { required: true, message: "Please input your username!" },
+                ]}
               >
-                Submit
-              </Button>
-            </Form.Item>
-          </Form>
+                <Input placeholder="Email" className={styles.input} />
+              </Form.Item>
+
+              <Form.Item
+                name="password"
+                rules={[
+                  { required: true, message: "Please input your password!" },
+                ]}
+              >
+                <Input.Password
+                  placeholder="Password"
+                  className={styles.input}
+                />
+              </Form.Item>
+
+              <Form.Item>
+                <Button
+                  loading={loading}
+                  type="primary"
+                  htmlType="submit"
+                  className={styles.button}
+                >
+                  Login
+                </Button>
+              </Form.Item>
+            </Form>
+
+            <p>
+              Don't have an account? <Link to="/register"> Register</Link>
+            </p>
+          </div>
         </div>
       </Homepage>
     </>

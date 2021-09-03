@@ -3,6 +3,7 @@
   margin-left: 1rem;
   border-radius: 10px;
   height: 800px;
+  position: relative;
 
   .title_section {
     p {
@@ -62,7 +63,10 @@
   }
 
   .add_new {
-    margin-top: 16.8rem;
+    // margin-top: 16.8rem;
+    position: absolute;
+    bottom: 25px;
+    width: 87%;
     .hr {
       width: 100%;
       height: 1px;

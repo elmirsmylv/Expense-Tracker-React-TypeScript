@@ -111,7 +111,13 @@ const App = () => {
                 className="user"
                 style={{ marginTop: "1rem", marginRight: "2rem" }}
               >
-                <p style={{ fontWeight: 500, opacity: "0.7" }}>
+                <p
+                  style={{
+                    fontWeight: 500,
+                    opacity: "0.7",
+                    fontSize: "1rem",
+                  }}
+                >
                   {data.username && `Hi, ${data.full_name}`}
                 </p>
               </div>
@@ -124,6 +130,7 @@ const App = () => {
                 <PrivateRoute exact path="/categories" component={Categories} />
                 <PrivateRoute exact path="/records" component={Records} />
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                <PrivateRoute exact path="/" component={Dashboard} />
                 {/* <Redirect from="/" to="/records" /> */}
               </div>
             </Content>

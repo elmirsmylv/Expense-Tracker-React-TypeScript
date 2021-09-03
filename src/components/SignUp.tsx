@@ -2,8 +2,11 @@ import React from "react";
 import { Form, Input, Button } from "antd";
 import api from "../utils/api";
 import { showError } from "../utils/messages";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
+import Homepage from "./Homepage";
+import styles from "../assets/styles/LoginAndRegister.module.scss";
+import register_svg from "../assets/images/register_svg.svg";
 
 export default function SignUp() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -46,43 +49,66 @@ export default function SignUp() {
   };
 
   return (
-    <Form
-      {...layout}
-      name="nest-messages"
-      onFinish={onFinish}
-      validateMessages={validateMessages}
-      labelCol={{ span: 7 }}
-      wrapperCol={{ span: 11 }}
-    >
-      <h2 style={{ textAlign: "center", marginBottom: "2rem" }}>Register</h2>
-      <Form.Item name="full_name" label="Full Name">
-        <Input />
-      </Form.Item>
+    <>
+      <Homepage>
+        <div className={styles.content}>
+          <img src={register_svg} alt="" width="600" className={styles.image} />
+          <div className={styles.form}>
+            <h2>Welcome To Expense.io</h2>
+            <Form
+              {...layout}
+              name="nest-messages"
+              onFinish={onFinish}
+              validateMessages={validateMessages}
+              labelCol={{ span: 7 }}
+              wrapperCol={{ span: 11 }}
+            >
+              <Form.Item name="full_name">
+                <Input placeholder="Full Name" className={styles.input} />
+              </Form.Item>
 
-      <Form.Item name="username" label="Username" rules={[{ required: true }]}>
-        <Input />
-      </Form.Item>
-      <Form.Item
-        name="email"
-        label="Email"
-        rules={[{ type: "email", required: true }]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="Password"
-        name="password"
-        rules={[
-          { required: true, message: "Please input your password!", min: 6 },
-        ]}
-      >
-        <Input.Password />
-      </Form.Item>
-      <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-        <Button loading={loading} type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
-    </Form>
+              <Form.Item name="username" rules={[{ required: true }]}>
+                <Input placeholder="Username" className={styles.input} />
+              </Form.Item>
+              <Form.Item
+                name="email"
+                rules={[{ type: "email", required: true }]}
+              >
+                <Input placeholder="Email" className={styles.input} />
+              </Form.Item>
+              <Form.Item
+                name="password"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your password!",
+                    min: 6,
+                  },
+                ]}
+              >
+                <Input.Password
+                  placeholder="Password"
+                  className={styles.input}
+                />
+              </Form.Item>
+              <Form.Item>
+                <Button
+                  loading={loading}
+                  type="primary"
+                  htmlType="submit"
+                  className={styles.button}
+                >
+                  Sign Up
+                </Button>
+              </Form.Item>
+            </Form>
+
+            <p>
+              Have an account? <Link to="/login"> Login</Link>
+            </p>
+          </div>
+        </div>
+      </Homepage>
+    </>
   );
 }

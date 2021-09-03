@@ -1,2 +1,36 @@
-.form {
+.content {
+  margin-top: 6rem;
+  display: flex;
+  align-items: center;
+
+  .form {
+    margin-left: 5rem;
+    box-shadow: 1px 1px 11px 1px #f5eaea;
+    border-radius: 10px;
+    width: 465px;
+    padding-inline: 2rem;
+    padding-block: 5rem;
+    text-align: center;
+
+    h2 {
+      margin-bottom: 4rem;
+      font-weight: 600;
+      color: rgb(54, 52, 52);
+    }
+
+    .input {
+      border-radius: 7px;
+      width: 400px;
+      height: 43px;
+      font-size: 1rem;
+    }
+
+    .button {
+      margin-top: 2rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      width: 400px;
+      height: 43px;
+    }
+  }
 }
