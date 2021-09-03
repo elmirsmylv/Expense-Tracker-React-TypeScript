@@ -21,6 +21,10 @@ This is a Expense Tracker built with ReactJs/TypeScript. You can login and regis
 - Sass
 - Figma
 
+## Backend
+
+https://github.com/reactdersleri/expense_tracker_be
+
 ## Installation
 
 Use the git clone
