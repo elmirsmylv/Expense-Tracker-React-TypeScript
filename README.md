@@ -40,3 +40,7 @@ git clone https://github.com/elmirsmylv/Expense-Tracker-TypeScript.git
 npm install
 npm start
 ```
+
+## Acknowledgements
+
+- [React Dersleri](https://www.youtube.com/c/ReactDersleri)
