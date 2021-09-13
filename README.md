@@ -20,6 +20,7 @@ This is a Expense Tracker built with ReactJs/TypeScript. You can login and regis
 - ReactJs / Redux
 - Css Modules
 - Sass
+- Ant Design
 - Figma
 
 ## Backend
