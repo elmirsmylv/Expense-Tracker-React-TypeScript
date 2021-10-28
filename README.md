@@ -1,7 +1,6 @@
 # Food Delivery Landing Page
 
-This is a Expense Tracker built with ReactJs/TypeScript. You can login and register. It has authentication and authorization. Also you can add new expense category and new expense record. It has restful api integration for data and authentication and authorization. It is not responsive yet. There is global state management with redux. And finally dahsboard's chart and expense cards static yet but I'll fix this asap.
-
+This is an Expense Tracker built with ReactJs/TypeScript. You can log in and register. It has authentication and authorization. Also, you can add a new expense category and new expense record. It has restful API integration for data and authentication and authorization. There is global state management with Redux.
 ### Here is the live demo
 
 [Expense.io](https://expense-tracker-elmir.vercel.app/)
