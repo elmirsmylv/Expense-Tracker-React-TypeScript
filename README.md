@@ -5,6 +5,8 @@ This is an Expense Tracker built with ReactJs/TypeScript. You can log in and reg
 
 [Expense.io](https://expense-tracker-elmir.vercel.app/)
 
+username: gregor123, password: 123456
+
 
 ![Screenshot from 2021-09-05 12-54-30](https://user-images.githubusercontent.com/59176193/132121213-7aa0a2a6-d41a-4846-9321-aa1dc7c021ca.png)
 
