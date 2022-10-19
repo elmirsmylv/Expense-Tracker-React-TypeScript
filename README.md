@@ -1,3 +1,5 @@
+> :warning: **The API I used in this project is deprecated. I'll integrate new API**
+
 # Expense Tracker
 
 This is an Expense Tracker built with ReactJs/TypeScript. You can log in and register. It has authentication and authorization. Also, you can add a new expense category and new expense record. It has restful API integration for data and authentication and authorization. There is global state management with Redux.
